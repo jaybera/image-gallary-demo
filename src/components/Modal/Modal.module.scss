@@ -1,0 +1,75 @@
+@import '../../mixins.scss';
+
+
+.overlayOuter {
+  @include position(fixed, 0, 0, 0, 0);
+	background-color: rgb(0 0 0 / 50%);
+	z-index: 1;
+
+	.overlayInner {
+		@include center(true, false);
+		width: 700px;
+		top: 50px;
+		background-color: #ffffff;
+		padding: 20px;
+
+		:global {
+			.slick-prev,
+			.slick-next {
+				z-index: 1;
+
+				&:before {
+					color: #000000;
+				}
+			}
+			.slick-next {
+				right: 10px;
+			}
+			.slick-prev {
+				left: 10px;
+			}
+		}
+
+		.carusalSlide {
+			width: 100%;
+			height: 300px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.thumbnailSlide {
+			height: 100px;
+			margin-top: 10px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.closeBtn {
+			text-align: right;
+			cursor: pointer;
+
+			button {
+				appearance: none;
+			}
+		}
+
+		@include breakpoint($max: 1023px) {
+			@include center(false, false);
+			width: 100%;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			overflow-y: auto;
+			box-sizing: border-box;
+		}
+	}
+}
